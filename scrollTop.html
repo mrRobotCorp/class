@@ -54,13 +54,12 @@
             var Height = $("#scrollTop").height(); 
             // Height 변수에 scrollTop 높이 적용 
             $("#scrollTop").hide();
-
+            
             $(window).scroll(function(){ 
                 var rolling = $(this).scrollTop() >= Height; 
-            // 스크롤 위치가 Height 의 값을 넘었을 때 == 윈도우 스크롤의 값이 navHeight 의 높이와 같거나 크다
-        
-            if(rolling) { 
-                //윈도우 스크롤 기능의 값이 navHeight 의 높이와 같거나 크면
+            // rolling = 스크롤 수직 위치가 Height 값을 넘어갈 때
+                if(rolling) { 
+                //스크롤 수직 위치가 Height 값 이상이면 실행
                     $("#scrollTop").fadeIn(500).css({"position":"fixed"});
                 }
                 else{
@@ -73,7 +72,7 @@
         $("#scrollTop").click(function() {
             console.log("click");
             $("html, body").animate({scrollTop: 0}, 600);
-            // 위로 스크롤이 움직이면 2000이 아니라 0으로 설정.
+            // 위로 스크롤이 움직이려면 2000이 아니라 0으로 설정.
         });
 
     </script>
