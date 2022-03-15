@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style>
+        html, body {
+            margin: 0px;
+        }
+        body {
+            height: 3000px;
+        }
+        #scrollTop {
+            align-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #6d6d6d;
+            border-radius: 50px;
+            text-align: center;
+            font-family:Verdana;
+            font-size: 12px;
+            bottom: 40px;
+            right: 50px;
+            position: fixed;
+            cursor: pointer;
+        }
+        #scrollTop:hover {
+            transition: 0.4s;
+            color: white;
+            background-color: rgb(127, 127, 233);  
+        }
+        #topImg {
+            display: block;
+            margin: 0px auto;
+            margin-top: 8px;
+            height: 16px;
+            width: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>스크롤 탑 이동</h1>
+    <div>
+        <aside id="scrollTop"><img src="source/top.png" id="topImg"/>Top</aside>
+    </div>  
+    
+    <script>
+        $(document).ready(function(){
+
+            var Height = $("#scrollTop").height(); 
+            // Height 변수에 scrollTop 높이 적용 
+            $("#scrollTop").hide();
+
+            $(window).scroll(function(){ 
+                var rolling = $(this).scrollTop() >= Height; 
+            // 스크롤 위치가 Height 의 값을 넘었을 때 == 윈도우 스크롤의 값이 navHeight 의 높이와 같거나 크다
+        
+            if(rolling) { 
+                //윈도우 스크롤 기능의 값이 navHeight 의 높이와 같거나 크면
+                    $("#scrollTop").fadeIn(500).css({"position":"fixed"});
+                }
+                else{
+                    $("#scrollTop").fadeOut(300);
+                }
+            });
+        
+        });
+        // document.body.style.overflow = "hidden";
+        $("#scrollTop").click(function() {
+            console.log("click");
+            $("html, body").animate({scrollTop: 0}, 600);
+            // 위로 스크롤이 움직이면 2000이 아니라 0으로 설정.
+        });
+
+    </script>
+</body>
+</html>
